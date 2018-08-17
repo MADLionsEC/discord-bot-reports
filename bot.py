@@ -29,11 +29,12 @@ async def on_message(message):
 
     if message.content.startswith('!meme'):
         msg_pool = ['haHAA', 'Hold my beer...', 'So much xD', 'Praise the memes!']
+        msg = msg_pool[randint(0, len(msg_pool) - 1)]
+        await client.send_message(message.channel, msg)
+
         memes_folder = 'stats_memes'
         img_pool = listdir(memes_folder)
-        msg = msg_pool[randint(0, len(msg_pool) -1)]
         img = img_pool[randint(0, len(img_pool) -1)]
-        await client.send_message(message.channel, msg)
         await client.send_file(message.channel, '{}/{}'.format(memes_folder, img))
 
 
