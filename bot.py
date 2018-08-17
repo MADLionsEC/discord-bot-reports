@@ -22,17 +22,19 @@ async def on_message(message):
         msg = 'There you have it, {0.author.mention}'.format(message)
         await client.send_message(message.channel, msg)
 
-        patch_img_path = 'Patch.png'
-        picks_img_path = 'Picks.png'
+        img_folder = 'images'
+        patch_img_path = '{}/patch.png'.format(img_folder)
+        picks_img_path = '{}/picks.png'.format(img_folder)
+
         await client.send_file(message.channel, patch_img_path)
         await client.send_file(message.channel, picks_img_path)
 
     if message.content.startswith('!meme'):
-        msg_pool = ['haHAA', 'Hold my beer...', 'So much xD', 'Praise the memes!']
+        msg_pool = ['haHAA', 'Hold my beer...', 'So much xD', 'Praise the memes!', 'Ayy lMaokai']
         msg = msg_pool[randint(0, len(msg_pool) - 1)]
         await client.send_message(message.channel, msg)
 
-        memes_folder = 'stats_memes'
+        memes_folder = 'memes'
         img_pool = listdir(memes_folder)
         img = img_pool[randint(0, len(img_pool) -1)]
         await client.send_file(message.channel, '{}/{}'.format(memes_folder, img))
